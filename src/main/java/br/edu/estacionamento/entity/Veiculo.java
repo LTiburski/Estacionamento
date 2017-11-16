@@ -47,6 +47,12 @@ public class Veiculo {
     public void setCor(String cor) {
         this.cor = cor;
     }
-    
-    
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
 }
