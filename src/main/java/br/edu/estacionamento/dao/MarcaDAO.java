@@ -8,6 +8,8 @@ package br.edu.estacionamento.dao;
 import br.edu.estacionamento.entity.Marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,4 +50,47 @@ public class MarcaDAO {
         return false;
     }
     
+    public ArrayList<Marca> listaMarcas(){
+        Connection conexao = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        String sql = "SELECT * FROM marcas";
+        
+        try{
+            conexao = Database.getInstance().getConnection();
+            ps = conexao.prepareCall(sql);
+            rs = ps.executeQuery();
+            
+            if (rs.isBeforeFirst()){
+                ArrayList<Marca> resultado = new ArrayList<>();
+                while (rs.next()){
+                    Marca m = new Marca();
+                    m.setId(rs.getInt("id"));
+                    m.setDescricao(rs.getString("descricao"));
+                    
+                    resultado.add(m);
+                }
+                return resultado;
+            }
+            
+        } catch (Exception ex){
+            System.out.println("[MarcaDAO] listaMarcas: " + ex.toString());
+        } finally {
+            try{
+                if (rs != null){
+                    rs.close();
+                }
+                if (ps != null){
+                    ps.close();
+                }
+                if (conexao != null){
+                    conexao.close();
+                }
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
 }
