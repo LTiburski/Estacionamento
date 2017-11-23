@@ -41,6 +41,13 @@ public class ClienteRN implements Serializable{
         return clienteDAO.lista();
     }
 
+    public String cadastrarCliente(){
+        if(clienteDAO.insereCliente(cliente)){
+            return "index?faces-redirect=true";
+        }
+        return null;
+    }
+    
     public ArrayList<Cliente> getLista() {
         return lista;
     }
