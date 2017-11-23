@@ -6,7 +6,7 @@
     </context-param>
     <listener>
         <listener-class>
-            br.edu.estacionamento.config.ContextRootListener
+            br.edu.estacionamento.configs.ContextRootListener
         </listener-class>
     </listener>
     <context-param>
