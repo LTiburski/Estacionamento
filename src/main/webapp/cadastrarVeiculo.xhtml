@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        
+<!-- private Integer id;
+    private String placa;
+    private Marca marca;
+    private String modelo;
+    private String cor;-->
+    <ui:composition template="/recursos/template/template.xhtml">
+        <ui:define name="tituloPagina">Cadastro de Veículos</ui:define>
+        <ui:define name="tituloPrincipal">Cadastro de Veículos</ui:define>
+        <ui:define name="tituloSecundario">Cadastre os Veículos</ui:define>
+        <ui:define name="botoesAcao">
+                    <p:commandButton value="Cadastrar" action="#{clienteRN.}" update="@form"/>
+        </ui:define>
+        
+        <ui:define name="conteudo">
+
+            <h:panelGrid columns="3">
+                    <p:outputLabel for="modelo" value="Modelo:" />
+                    <p:inputText value="#{veiculoRN.veiculo.modelo}" id="nome"/>
+                    <p:message for="modelo"/>
+
+                    <p:outputLabel for="placa" value="Placa:" />
+                    <p:inputMask mask="AAA-9999" id="placa" value="#{veiculoRN.veiculo.marca}" />
+                    <p:message for="placa" />
+
+                    <p:outputLabel for="cor" value="Cor:" />
+                    <p:inputText id="cor" value="#{veiculoRN.veiculo.cor}" />
+                    <p:message for="cor" />
+           
+                </h:panelGrid>
+                    
+        </ui:define>
+        
+    </ui:composition>
+</html>
+

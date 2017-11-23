@@ -25,15 +25,24 @@ public class MarcaRN implements Serializable {
     
     MarcaDAO marcaDAO = new MarcaDAO();
     
-    private MarcaRN marca;
+    private Marca marca;
     private ArrayList<MarcaRN> lista;
     
     @PostConstruct
     public void posConstrutor(){
-        marca = new MarcaRN();
+        marca = new Marca();
     }
     
     public ArrayList<Marca> listaMarcas(){
         return marcaDAO.listaMarcas();
     }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+    
 }

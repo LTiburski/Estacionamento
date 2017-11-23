@@ -16,29 +16,26 @@
         <ui:define name="tituloPrincipal">Cadastro de Clientes</ui:define>
         <ui:define name="tituloSecundario">Cadastre os Clientes</ui:define>
         <ui:define name="botoesAcao">
-                    <p:commandButton value="Cadastrar" action="#" update="@form"/>
+                    <p:commandButton value="Cadastrar" action="#{clienteRN.}" update="@form"/>
         </ui:define>
         
         <ui:define name="conteudo">
 
             <h:panelGrid columns="3">
-            <p:messages globalOnly="true" autoUpdate="true" />
-            <p:panel header="Cadastrar Cliente">
-                <h:panelGrid columns="3">
                     <p:outputLabel for="nome" value="Nome:" />
-                    <p:inputText value="#" id="nome"/>
+                    <p:inputText value="#{clienteRN.cliente.nome}" id="nome"/>
                     <p:message for="nome"/>
 
                     <p:outputLabel for="cpf" value="Cpf:" />
-                    <p:inputMask mask="999.999.999-99" id="cpf" value="#" />
+                    <p:inputMask mask="999.999.999-99" id="cpf" value="#{clienteRN.cliente.cgc}" />
                     <p:message for="cpf" />
 
                     <p:outputLabel for="endereco" value="Endereço:" />
-                    <p:inputText id="endereco" value="#" />
+                    <p:inputText id="endereco" value="#{clienteRN.cliente.endereco}" />
                     <p:message for="endereco" />
                     
                     <p:outputLabel for="cep" value="Cep:" />
-                    <p:inputMask mask="99.999-999" id="cpf" value="#" />
+                    <p:inputMask mask="99.999-999" id="cep" value="#{clienteRN.cliente.cep}" />
                     <p:message for="cep" />
            
                 </h:panelGrid>
