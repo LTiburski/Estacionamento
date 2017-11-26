@@ -17,6 +17,7 @@ public class Cliente {
     private String cgc;
     private String endereco;
     private String cep;
+    private String senha;
     private ArrayList<Veiculo> veiculos;
 
     public Integer getId() {
@@ -65,5 +66,13 @@ public class Cliente {
 
     public void setVeiculos(ArrayList<Veiculo> veiculos) {
         this.veiculos = veiculos;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

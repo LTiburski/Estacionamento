@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
         
 <!-- private Integer id;
@@ -16,12 +17,16 @@
         <ui:define name="tituloPrincipal">Cadastro de Veículos</ui:define>
         <ui:define name="tituloSecundario">Cadastre os Veículos</ui:define>
         <ui:define name="botoesAcao">
-                    <p:commandButton value="Cadastrar" action="#{clienteRN.}" update="@form"/>
+            <p:commandButton value="Cadastrar" action="#{veiculoRN.cadastrarVeiculo()}" update="@form"/>
         </ui:define>
         
         <ui:define name="conteudo">
 
             <h:panelGrid columns="3">
+                <p:selectOneMenu id="marca" value="#{veiculoRN.veiculo.marca}" converter="omnifaces.SelectItemsIndexConverter">
+                    <f:selectItems value="#{marcaRN.lista}" var="Nmarca" itemLabel="#{Nmarca.descricao}" itemValue="#{Nmarca}" />
+                    </p:selectOneMenu>
+                
                     <p:outputLabel for="modelo" value="Modelo:" />
                     <p:inputText value="#{veiculoRN.veiculo.modelo}" id="nome"/>
                     <p:message for="modelo"/>

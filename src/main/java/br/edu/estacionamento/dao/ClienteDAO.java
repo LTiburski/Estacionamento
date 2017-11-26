@@ -22,6 +22,40 @@ public class ClienteDAO {
     public ClienteDAO() {
     }
 
+    public boolean insereCliente(Cliente cliente){
+        Connection conexao = null;
+        PreparedStatement ps = null;
+        
+        String sql = "INSERT INTO clientes (nome, cgc, endereco, cep) VALUES (?, ?, ?, ?)";
+        
+        try{
+            conexao = Database.getInstance().getConnection();
+            ps = conexao.prepareStatement(sql);
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getCgc());
+            ps.setString(3, cliente.getEndereco());
+            ps.setString(4, cliente.getCep());
+            
+            if (ps.executeUpdate() > 0){
+                return true;
+            }
+        } catch (Exception ex){
+            System.out.println("[ClienteDAO] insereCliente: " + ex.toString());
+        } finally {
+            try{
+               if (ps != null){
+                   ps.close();
+               } 
+               if (conexao != null){
+                   conexao.close();
+               }
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return false;
+    }
+    
     public ArrayList<Cliente> lista() {
         Connection conexao = null;
         PreparedStatement ps = null;

@@ -18,25 +18,31 @@ import javax.inject.Named;
  *
  * @author Lucas Fernando
  */
-
 @ManagedBean
 @Named
 @ViewScoped
-public class VeiculoRN implements Serializable{
-    
+public class VeiculoRN implements Serializable {
+
     VeiculoDAO veiculoDAO = new VeiculoDAO();
-    
+
     Veiculo veiculo;
     ArrayList<Veiculo> lista;
-    
+
     @PostConstruct
-    public void posConstrutor(){
+    public void posConstrutor() {
         veiculo = new Veiculo();
         lista = listaVeiculos();
     }
-    
-    public ArrayList<Veiculo> listaVeiculos(){
+
+    public ArrayList<Veiculo> listaVeiculos() {
         return veiculoDAO.listaVeiculos();
+    }
+
+    public String cadastrarVeiculo() {
+        if (veiculoDAO.cadastraVeiculo(veiculo)) {
+            return "index?faces-redirect=true";
+        }
+        return null;
     }
 
     public Veiculo getVeiculo() {

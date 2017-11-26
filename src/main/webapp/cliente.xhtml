@@ -16,7 +16,7 @@
         <ui:define name="tituloPrincipal">Cadastro de Clientes</ui:define>
         <ui:define name="tituloSecundario">Cadastre os Clientes</ui:define>
         <ui:define name="botoesAcao">
-                    <p:commandButton value="Cadastrar" action="#{clienteRN.}" update="@form"/>
+            <p:commandButton value="Cadastrar" action="#{clienteRN.cadastrarCliente()}" update="@form"/>
         </ui:define>
         
         <ui:define name="conteudo">
